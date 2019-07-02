@@ -17,9 +17,7 @@ COPY manage.py ${APP_DIR}/manage.py
 COPY docker_sync_dep.sh ${APP_DIR}/run_as_munkiadmin.sh
 COPY docker_sync_dep.sh ${APP_DIR}/sync_dep_devices.sh
 
-RUN chmod +x ${APP_DIR}/manage.py \
-    && mkdir -p /home/app \
-    && ln -s ${APP_DIR} /home/app/DEPTool
+RUN chmod +x ${APP_DIR}/manage.py
 
 WORKDIR ${APP_DIR}
 
@@ -27,4 +25,4 @@ EXPOSE 8080
 
 VOLUME $APP_DIR/keyset
 
-CMD ["./manage.py runserver 0.0.0.0:8080"]
+CMD ["./manage.py", "runserver", "0.0.0.0:8080"]
